@@ -1,1 +1,928 @@
 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Frank – Hållbarhet med mening</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+    --green: #244b3a;
+    --green-light: #dfe9df;
+    --cream: #f5f2e9;
+    --sand: #ddd5c5;
+    --dark: #17211c;
+    --white: #ffffff;
+    --accent: #a6b98b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--dark);
+    background: var(--cream);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---------------- NAVIGATION ---------------- */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 6%;
+    transition: .4s;
+}
+
+nav.scrolled {
+    background: rgba(245,242,233,.94);
+    backdrop-filter: blur(12px);
+    padding: 15px 6%;
+    box-shadow: 0 3px 20px rgba(0,0,0,.06);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #66815c;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: .95rem;
+}
+
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--green);
+    transition: .3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 6% 80px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,38,28,.78) 0%,
+            rgba(20,38,28,.48) 45%,
+            rgba(20,38,28,.05) 100%
+        ),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    
+    color: white;
+}
+
+.hero-content {
+    max-width: 720px;
+    animation: fadeUp 1s ease forwards;
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: .78rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #d5e3c5;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(4rem, 9vw, 8rem);
+    line-height: .9;
+    font-weight: 500;
+    letter-spacing: -5px;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 1.2rem;
+    color: #f1f3ed;
+    margin-bottom: 38px;
+}
+
+.button {
+    display: inline-block;
+    background: white;
+    color: var(--green);
+    padding: 15px 27px;
+    border-radius: 100px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+/* ---------------- INTRO ---------------- */
+
+.intro {
+    padding: 130px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+}
+
+.section-label {
+    color: #68825d;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .75rem;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #536057;
+    max-width: 570px;
+}
+
+.intro-image {
+    height: 600px;
+    border-radius: 250px 250px 20px 20px;
+    overflow: hidden;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s;
+}
+
+.intro-image:hover img {
+    transform: scale(1.05);
+}
+
+/* ---------------- VALUES ---------------- */
+
+.values {
+    background: var(--green);
+    color: white;
+    padding: 120px 7%;
+}
+
+.values-header {
+    max-width: 700px;
+    margin-bottom: 70px;
+}
+
+.values h2 {
+    color: white;
+}
+
+.values-header p {
+    color: #c9d6ca;
+    font-size: 1.1rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.card {
+    border: 1px solid rgba(255,255,255,.18);
+    padding: 40px;
+    min-height: 300px;
+    border-radius: 20px;
+    transition: .4s;
+}
+
+.card:hover {
+    background: rgba(255,255,255,.08);
+    transform: translateY(-8px);
+}
+
+.card-number {
+    font-size: .8rem;
+    color: #a9c194;
+    margin-bottom: 70px;
+}
+
+.card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #c7d1c9;
+}
+
+/* ---------------- IMAGE BREAK ---------------- */
+
+.image-break {
+    height: 65vh;
+    min-height: 500px;
+
+    background:
+        linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.2)),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85")
+        center/cover fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote {
+    max-width: 900px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.quote p {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    line-height: 1;
+}
+
+/* ---------------- SUSTAINABILITY ---------------- */
+
+.sustainability {
+    padding: 130px 7%;
+}
+
+.sustainability-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.sustainability-intro {
+    position: sticky;
+    top: 120px;
+}
+
+.sustainability-intro p {
+    max-width: 500px;
+    color: #5b665f;
+    font-size: 1.1rem;
+}
+
+.points {
+    display: flex;
+    flex-direction: column;
+}
+
+.point {
+    padding: 35px 0;
+    border-top: 1px solid #c9c5b9;
+}
+
+.point:last-child {
+    border-bottom: 1px solid #c9c5b9;
+}
+
+.point h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.point p {
+    color: #68716b;
+}
+
+/* ---------------- GALLERY ---------------- */
+
+.gallery {
+    padding: 0 6% 120px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 20px;
+}
+
+.gallery-main {
+    height: 650px;
+}
+
+.gallery-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s;
+}
+
+.gallery-image:hover img {
+    transform: scale(1.06);
+}
+
+/* ---------------- CTA ---------------- */
+
+.cta {
+    padding: 130px 7%;
+    background: #dfe8d9;
+    text-align: center;
+}
+
+.cta h2 {
+    max-width: 800px;
+    margin: auto auto 25px;
+}
+
+.cta p {
+    max-width: 600px;
+    margin: auto auto 35px;
+    color: #566259;
+    font-size: 1.1rem;
+}
+
+.cta .button {
+    background: var(--green);
+    color: white;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    background: #17251e;
+    color: white;
+    padding: 55px 7%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: #9eaaa2;
+    font-size: .9rem;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width: 800px) {
+
+    nav {
+        padding: 18px 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        padding: 100px 7%;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+    }
+
+    .intro,
+    .sustainability-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .intro {
+        padding: 90px 7%;
+    }
+
+    .intro-image {
+        height: 450px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .values {
+        padding: 90px 7%;
+    }
+
+    .sustainability {
+        padding: 90px 7%;
+    }
+
+    .sustainability-intro {
+        position: static;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-main {
+        height: 450px;
+    }
+
+    .gallery-side {
+        height: 500px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav id="nav">
+    <div class="logo">Frank<span>.</span></div>
+
+    <ul class="nav-links">
+        <li><a href="#om">Om Frank</a></li>
+        <li><a href="#tankar">Tankar</a></li>
+        <li><a href="#hallbarhet">Hållbarhet</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="kicker">
+            Ett enklare sätt att tänka
+        </div>
+
+        <h1>Frank.</h1>
+
+        <p>
+            Tankar om naturen, miljön och framtiden.
+            Om att ta hand om det vi har – och skapa mer
+            hållbara sätt att leva.
+        </p>
+
+        <a class="button" href="#om">
+            Läs mer ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro reveal" id="om">
+
+    <div>
+
+        <div class="section-label">
+            Om Frank
+        </div>
+
+        <h2>
+            Mindre slit.<br>
+            Mer mening.
+        </h2>
+
+        <p>
+            Jag tror på ett samhälle där vi använder våra
+            resurser klokare. Där saker får ett längre liv,
+            där naturen får ta plats och där hållbarhet inte
+            behöver vara komplicerat.
+            <br><br>
+            För mig handlar miljö inte bara om stora globala
+            frågor. Det handlar också om de små besluten
+            varje dag.
+        </p>
+
+    </div>
+
+    <div class="intro-image">
+        <img
+            src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=85"
+            alt="Grön skog">
+    </div>
+
+</section>
+
+
+<!-- VALUES -->
+
+<section class="values" id="tankar">
+
+    <div class="values-header reveal">
+
+        <div class="section-label">
+            Tre tankar
+        </div>
+
+        <h2>
+            Det börjar<br>
+            nära oss.
+        </h2>
+
+        <p>
+            Hållbarhet behöver inte vara perfekt.
+            Det viktiga är riktningen.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <div class="card-number">01</div>
+
+            <h3>Återbruk</h3>
+
+            <p>
+                Det som redan finns är ofta den mest
+                hållbara resursen. Reparera, återanvänd
+                och ge gamla saker en ny funktion.
+            </p>
+        </div>
+
+
+        <div class="card reveal">
+            <div class="card-number">02</div>
+
+            <h3>Naturen</h3>
+
+            <p>
+                Vi behöver naturen mer än vi ibland
+                kommer ihåg. Skogen, vattnet och den
+                biologiska mångfalden är grunden för livet.
+            </p>
+        </div>
+
+
+        <div class="card reveal">
+            <div class="card-number">03</div>
+
+            <h3>Enklare liv</h3>
+
+            <p>
+                Att konsumera mindre kan också betyda
+                att leva rikare. Mer tid, mer natur och
+                färre saker som behöver bytas ut.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- IMAGE / QUOTE -->
+
+<section class="image-break">
+
+    <div class="quote reveal">
+
+        <p>
+            "Vi är inte ägare
+            av naturen.
+            Vi är en del av den."
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SUSTAINABILITY -->
+
+<section class="sustainability" id="hallbarhet">
+
+    <div class="sustainability-grid">
+
+        <div class="sustainability-intro reveal">
+
+            <div class="section-label">
+                Hållbarhet
+            </div>
+
+            <h2>
+                Från tanke<br>
+                till handling.
+            </h2>
+
+            <p>
+                Små förändringar kan tillsammans göra
+                stor skillnad. Här är några områden där
+                jag tycker att det är värt att börja.
+            </p>
+
+        </div>
+
+
+        <div class="points">
+
+            <div class="point reveal">
+                <h3>🌱 Konsumera med eftertanke</h3>
+                <p>
+                    Fråga dig om du verkligen behöver
+                    köpa nytt. Låna, hyr eller köp begagnat
+                    när det fungerar.
+                </p>
+            </div>
+
+            <div class="point reveal">
+                <h3>🏡 Ta hand om det du har</h3>
+                <p>
+                    Underhåll och reparera innan du byter.
+                    Ett längre liv för produkter betyder
+                    mindre resursanvändning.
+                </p>
+            </div>
+
+            <div class="point reveal">
+                <h3>🚲 Res smartare</h3>
+                <p>
+                    Gång, cykel och kollektivtrafik kan
+                    ibland ersätta bilen – och samtidigt
+                    ge mer vardagsrörelse.
+                </p>
+            </div>
+
+            <div class="point reveal">
+                <h3>🥕 Ät mer medvetet</h3>
+                <p>
+                    Planera maten, minska matsvinnet och
+                    låt säsongens råvaror få större plats.
+                </p>
+            </div>
+
+            <div class="point reveal">
+                <h3>🌳 Ge naturen tid</h3>
+                <p>
+                    Att vistas i naturen är inte bara bra
+                    för oss. Det kan också skapa en starkare
+                    vilja att skydda den.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="gallery">
+
+    <div class="gallery-grid">
+
+        <div class="gallery-main gallery-image reveal">
+            <img
+                src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=85"
+                alt="Person i skog">
+        </div>
+
+        <div class="gallery-side">
+
+            <div class="gallery-image reveal">
+                <img
+                    src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Gröna växter">
+            </div>
+
+            <div class="gallery-image reveal">
+                <img
+                    src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Landskap">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta" id="kontakt">
+
+    <div class="reveal">
+
+        <div class="section-label">
+            Frank
+        </div>
+
+        <h2>
+            Framtiden byggs
+            av det vi gör idag.
+        </h2>
+
+        <p>
+            Det behöver inte börja med en stor förändring.
+            Det kan börja med nästa lilla beslut.
+        </p>
+
+        <a href="mailto:hej@frank.se" class="button">
+            Säg hej →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <strong>Frank.</strong>
+
+    <p>
+        Tankar om miljö, hållbarhet och livet.
+        © <span id="year"></span>
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ---------------- NAVIGATION ---------------- */
+
+const nav = document.getElementById("nav");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
+
+});
+
+
+/* ---------------- SCROLL ANIMATION ---------------- */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.12
+    }
+);
+
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+
+/* ---------------- CURRENT YEAR ---------------- */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* ---------------- SMOOTH ANCHOR OFFSET ---------------- */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener("click", function(e) {
+
+        const target =
+            document.querySelector(this.getAttribute("href"));
+
+        if (!target) return;
+
+        e.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+
